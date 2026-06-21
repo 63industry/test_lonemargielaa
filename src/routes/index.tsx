@@ -12,17 +12,17 @@ import { Footer } from "@/components/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "NØIR.FRAME — Photographe & Vidéaste Streetwear / Clips Rap" },
+      { title: "NØIR.FRAME — Streetwear Photographer & Videographer / Rap Visuals" },
       {
         name: "description",
         content:
-          "Directeur créatif, photographe et vidéaste basé à Paris. Clips de rap, lookbooks streetwear, portraits d'artistes et visuels urbains. Réservez un shoot ou un clip.",
+          "Creative director, photographer and videographer based in Paris. Rap music videos, streetwear lookbooks, artist portraits and urban visuals. Book a shoot or a video.",
       },
       { property: "og:title", content: "NØIR.FRAME — Urban Visuals" },
       {
         property: "og:description",
         content:
-          "Photographe & vidéaste streetwear et rap. Visuels bruts, contrastés, underground.",
+          "Streetwear & rap photographer and videographer. Raw, high-contrast, underground visuals.",
       },
       { property: "og:type", content: "website" },
     ],
