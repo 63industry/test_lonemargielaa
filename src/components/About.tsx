@@ -16,7 +16,7 @@ export function About() {
           <div className="overflow-hidden border border-border">
             <img
               src={aboutPortrait}
-              alt="Portrait du directeur créatif"
+              alt="Portrait of the creative director"
               loading="lazy"
               width={1000}
               height={1200}

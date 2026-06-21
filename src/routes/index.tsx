@@ -38,7 +38,7 @@ function Index() {
       <Marquee
         items={[
           "Streetwear",
-          "Clips Rap",
+          "Rap Videos",
           "Portraits",
           "Brand Films",
           "Lifestyle",
