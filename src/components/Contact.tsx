@@ -58,13 +58,13 @@ export function Contact() {
         <div>
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">04 — Booking</p>
           <h2 className="display-title mt-3 text-[clamp(2.6rem,9vw,7rem)]">
-            On
+            Let's
             <br />
-            <span className="text-acid">collabore</span>?
+            <span className="text-acid">collaborate</span>?
           </h2>
           <p className="mt-6 max-w-md text-base text-muted-foreground sm:text-lg">
-            Un clip, un shooting marque ou un événement à immortaliser ? Décris
-            ton projet, je reviens vers toi rapidement.
+            A music video, a brand shoot or an event to immortalize? Describe
+            your project and I'll get back to you fast.
           </p>
 
           <div className="mt-10 space-y-3">
@@ -91,16 +91,16 @@ export function Contact() {
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-          <Field label="Nom">
-            <input name="name" type="text" maxLength={80} className={inputCls} placeholder="Ton nom / projet" />
+          <Field label="Name">
+            <input name="name" type="text" maxLength={80} className={inputCls} placeholder="Your name / project" />
           </Field>
           <Field label="Email">
-            <input name="email" type="email" maxLength={160} className={inputCls} placeholder="toi@email.com" />
+            <input name="email" type="email" maxLength={160} className={inputCls} placeholder="you@email.com" />
           </Field>
 
           <div>
             <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              Type de projet
+              Project type
             </span>
             <div className="mt-3 flex flex-wrap gap-2">
               {projectTypes.map((t) => (
