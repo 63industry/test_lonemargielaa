@@ -143,7 +143,7 @@ export function Contact() {
           </div>
 
           <Field label="Message">
-            <textarea name="message" rows={4} maxLength={1000} className={inputCls} placeholder="Parle-moi de ton projet..." />
+            <textarea name="message" rows={4} maxLength={1000} className={inputCls} placeholder="Tell me about your project..." />
           </Field>
 
           <Magnetic strength={0.3}>
@@ -152,7 +152,7 @@ export function Contact() {
               disabled={sending}
               className="w-full bg-acid px-7 py-4 font-mono text-sm font-bold uppercase tracking-[0.2em] text-acid-foreground transition-shadow hover:shadow-[0_0_40px_-6px_var(--acid)] disabled:opacity-60"
             >
-              {sending ? "Envoi..." : "Envoyer la demande"}
+              {sending ? "Sending..." : "Send request"}
             </button>
           </Magnetic>
         </form>
