@@ -7,11 +7,11 @@ const projectTypes = ["Music Video", "Streetwear Brand", "Event", "Portrait"];
 const budgets = ["< $1k", "$1k–3k", "$3k–8k", "$8k +"];
 
 const schema = z.object({
-  name: z.string().trim().min(2, "Nom requis").max(80),
-  email: z.string().trim().email("Email invalide").max(160),
-  projectType: z.string().min(1, "Choisis un type"),
-  budget: z.string().min(1, "Choisis un budget"),
-  message: z.string().trim().min(10, "Donne quelques détails").max(1000),
+  name: z.string().trim().min(2, "Name is required").max(80),
+  email: z.string().trim().email("Invalid email").max(160),
+  projectType: z.string().min(1, "Pick a project type"),
+  budget: z.string().min(1, "Pick a budget"),
+  message: z.string().trim().min(10, "Add a few details").max(1000),
 });
 
 const socials = [
