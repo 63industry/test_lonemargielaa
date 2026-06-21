@@ -69,13 +69,18 @@ export function Hero() {
           </div>
         </div>
 
-        {/* dynamic image strip */}
-        <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {[
-            { src: heroMain, h: "aspect-[3/4]" },
-          ].map((_, i) => null)}
+        {/* featured image band */}
+        <div className="mt-14 overflow-hidden border border-border">
+          <img
+            src={heroMain}
+            alt="Portrait streetwear en clair-obscur"
+            width={1280}
+            height={1600}
+            className="h-[42vh] w-full object-cover object-[center_25%] grayscale transition-all duration-700 hover:grayscale-0 sm:h-[55vh]"
+          />
         </div>
       </div>
     </section>
   );
 }
+
