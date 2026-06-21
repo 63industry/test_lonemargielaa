@@ -3,15 +3,15 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { Magnetic } from "./Magnetic";
 
-const projectTypes = ["Clip vidéo", "Marque Streetwear", "Événement", "Portrait"];
-const budgets = ["< 1k€", "1k–3k€", "3k–8k€", "8k€ +"];
+const projectTypes = ["Music Video", "Streetwear Brand", "Event", "Portrait"];
+const budgets = ["< $1k", "$1k–3k", "$3k–8k", "$8k +"];
 
 const schema = z.object({
-  name: z.string().trim().min(2, "Nom requis").max(80),
-  email: z.string().trim().email("Email invalide").max(160),
-  projectType: z.string().min(1, "Choisis un type"),
-  budget: z.string().min(1, "Choisis un budget"),
-  message: z.string().trim().min(10, "Donne quelques détails").max(1000),
+  name: z.string().trim().min(2, "Name is required").max(80),
+  email: z.string().trim().email("Invalid email").max(160),
+  projectType: z.string().min(1, "Pick a project type"),
+  budget: z.string().min(1, "Pick a budget"),
+  message: z.string().trim().min(10, "Add a few details").max(1000),
 });
 
 const socials = [
@@ -48,7 +48,7 @@ export function Contact() {
       form.reset();
       setProjectType("");
       setBudget("");
-      toast.success("Message envoyé. Je te recontacte sous 48h.");
+      toast.success("Message sent. I'll get back to you within 48h.");
     }, 800);
   };
 
@@ -58,13 +58,13 @@ export function Contact() {
         <div>
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">04 — Booking</p>
           <h2 className="display-title mt-3 text-[clamp(2.6rem,9vw,7rem)]">
-            On
+            Let's
             <br />
-            <span className="text-acid">collabore</span>?
+            <span className="text-acid">collaborate</span>?
           </h2>
           <p className="mt-6 max-w-md text-base text-muted-foreground sm:text-lg">
-            Un clip, un shooting marque ou un événement à immortaliser ? Décris
-            ton projet, je reviens vers toi rapidement.
+            A music video, a brand shoot or an event to immortalize? Describe
+            your project and I'll get back to you fast.
           </p>
 
           <div className="mt-10 space-y-3">
@@ -91,16 +91,16 @@ export function Contact() {
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-          <Field label="Nom">
-            <input name="name" type="text" maxLength={80} className={inputCls} placeholder="Ton nom / projet" />
+          <Field label="Name">
+            <input name="name" type="text" maxLength={80} className={inputCls} placeholder="Your name / project" />
           </Field>
           <Field label="Email">
-            <input name="email" type="email" maxLength={160} className={inputCls} placeholder="toi@email.com" />
+            <input name="email" type="email" maxLength={160} className={inputCls} placeholder="you@email.com" />
           </Field>
 
           <div>
             <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              Type de projet
+              Project type
             </span>
             <div className="mt-3 flex flex-wrap gap-2">
               {projectTypes.map((t) => (
@@ -143,7 +143,7 @@ export function Contact() {
           </div>
 
           <Field label="Message">
-            <textarea name="message" rows={4} maxLength={1000} className={inputCls} placeholder="Parle-moi de ton projet..." />
+            <textarea name="message" rows={4} maxLength={1000} className={inputCls} placeholder="Tell me about your project..." />
           </Field>
 
           <Magnetic strength={0.3}>
@@ -152,7 +152,7 @@ export function Contact() {
               disabled={sending}
               className="w-full bg-acid px-7 py-4 font-mono text-sm font-bold uppercase tracking-[0.2em] text-acid-foreground transition-shadow hover:shadow-[0_0_40px_-6px_var(--acid)] disabled:opacity-60"
             >
-              {sending ? "Envoi..." : "Envoyer la demande"}
+              {sending ? "Sending..." : "Send request"}
             </button>
           </Magnetic>
         </form>

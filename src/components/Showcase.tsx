@@ -20,17 +20,17 @@ interface Item {
 
 const items: Item[] = [
   { src: work3, title: "Lil Vyper — Portrait", tag: "Editorial", kind: "photo", w: 900, h: 1200, span: "row-span-2" },
-  { src: work2, title: "Live @ Trabendo", tag: "Clip / Live", kind: "video", w: 1200, h: 900 },
+  { src: work2, title: "Live @ Trabendo", tag: "Music Video / Live", kind: "video", w: 1200, h: 900 },
   { src: work1, title: "FW Lookbook", tag: "Streetwear", kind: "photo", w: 900, h: 1200 },
-  { src: work6, title: "On Set — Music Video", tag: "Clip Rap", kind: "video", w: 1200, h: 1200, span: "row-span-2" },
+  { src: work6, title: "On Set — Music Video", tag: "Rap Video", kind: "video", w: 1200, h: 1200, span: "row-span-2" },
   { src: work5, title: "Grail Product", tag: "Brand", kind: "photo", w: 1200, h: 900 },
   { src: work4, title: "Nightwalk — Visual", tag: "Lifestyle", kind: "video", w: 1200, h: 1500 },
 ];
 
 const filters: { id: Kind; label: string }[] = [
-  { id: "all", label: "Tout" },
+  { id: "all", label: "All" },
   { id: "photo", label: "Photo" },
-  { id: "video", label: "Vidéo" },
+  { id: "video", label: "Video" },
 ];
 
 export function Showcase() {

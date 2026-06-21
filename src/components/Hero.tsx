@@ -44,9 +44,9 @@ export function Hero() {
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <p className="max-w-md font-sans text-base text-muted-foreground sm:text-lg">
-            Je capture l'énergie brute du streetwear, des clips de rap et de la
-            culture urbaine. Des visuels qui frappent fort, pour les artistes et
-            les marques qui n'ont pas peur du noir.
+            I capture the raw energy of streetwear, rap music videos and urban
+            culture. Hard-hitting visuals for the artists and brands who aren't
+            afraid of the dark.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
@@ -55,7 +55,7 @@ export function Hero() {
                 href="#contact"
                 className="inline-block bg-acid px-7 py-4 font-mono text-sm font-bold uppercase tracking-[0.2em] text-acid-foreground"
               >
-                Réserver un shoot
+                Book a shoot
               </a>
             </Magnetic>
             <Magnetic strength={0.45}>
@@ -63,7 +63,7 @@ export function Hero() {
                 href="#showcase"
                 className="inline-block border border-border px-7 py-4 font-mono text-sm font-bold uppercase tracking-[0.2em] text-foreground transition-colors hover:border-acid hover:text-acid"
               >
-                Voir le portfolio
+                View portfolio
               </a>
             </Magnetic>
           </div>
@@ -73,7 +73,7 @@ export function Hero() {
         <div className="mt-14 overflow-hidden border border-border">
           <img
             src={heroMain}
-            alt="Portrait streetwear en clair-obscur"
+            alt="Streetwear portrait in chiaroscuro lighting"
             width={1280}
             height={1600}
             className="h-[42vh] w-full object-cover object-[center_25%] grayscale transition-all duration-700 hover:grayscale-0 sm:h-[55vh]"

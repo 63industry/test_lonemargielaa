@@ -17,15 +17,15 @@ export function RecentWork() {
             style={{ transform: `translateY(${p.offset}px)` }}
             className="display-title text-[clamp(2.4rem,8vw,6rem)]"
           >
-            Projets <span className="text-stroke">récents</span>
+            Recent <span className="text-stroke">projects</span>
           </h2>
         </div>
 
         <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:grid-rows-2">
-          <Tile className="col-span-2 row-span-2 aspect-square sm:aspect-auto" src={work4} w={1200} h={1500} title="Neon Nights" sub="Série lifestyle urbaine" big />
+          <Tile className="col-span-2 row-span-2 aspect-square sm:aspect-auto" src={work4} w={1200} h={1500} title="Neon Nights" sub="Urban lifestyle series" big />
           <Tile className="aspect-square" src={work3} w={900} h={1200} title="Cold Gaze" sub="Portrait" />
           <Tile className="aspect-square" src={work5} w={1200} h={900} title="Grails" sub="Brand" />
-          <Tile className="col-span-2 aspect-[2/1]" src={work2} w={1200} h={900} title="Mainstage" sub="Concert / Clip" />
+          <Tile className="col-span-2 aspect-[2/1]" src={work2} w={1200} h={900} title="Mainstage" sub="Concert / Video" />
         </div>
       </div>
     </section>
