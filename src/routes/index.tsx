@@ -1,29 +1,57 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Toaster } from "@/components/ui/sonner";
+import { SiteNav } from "@/components/SiteNav";
+import { Hero } from "@/components/Hero";
+import { Marquee } from "@/components/Marquee";
+import { Showcase } from "@/components/Showcase";
+import { RecentWork } from "@/components/RecentWork";
+import { About } from "@/components/About";
+import { Contact } from "@/components/Contact";
+import { Footer } from "@/components/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "NØIR.FRAME — Photographe & Vidéaste Streetwear / Clips Rap" },
+      {
+        name: "description",
+        content:
+          "Directeur créatif, photographe et vidéaste basé à Paris. Clips de rap, lookbooks streetwear, portraits d'artistes et visuels urbains. Réservez un shoot ou un clip.",
+      },
+      { property: "og:title", content: "NØIR.FRAME — Urban Visuals" },
+      {
+        property: "og:description",
+        content:
+          "Photographe & vidéaste streetwear et rap. Visuels bruts, contrastés, underground.",
+      },
+      { property: "og:type", content: "website" },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
+    <main className="relative">
+      <SiteNav />
+      <Hero />
+      <Marquee
+        items={[
+          "Streetwear",
+          "Clips Rap",
+          "Portraits",
+          "Brand Films",
+          "Lifestyle",
+          "Concerts",
+        ]}
+        className="border-y border-border py-6"
       />
-    </div>
+      <Showcase />
+      <RecentWork />
+      <About />
+      <Contact />
+      <Footer />
+      <Toaster position="top-center" theme="dark" />
+    </main>
   );
 }
