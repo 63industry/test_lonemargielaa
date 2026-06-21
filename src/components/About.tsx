@@ -31,15 +31,14 @@ export function About() {
         <div>
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">03 — About</p>
           <h2 className="display-title mt-3 text-[clamp(2.2rem,7vw,5rem)]">
-            L'œil derrière
+            The eye behind
             <br />
-            <span className="text-stroke-acid">le chaos</span>
+            <span className="text-stroke-acid">the chaos</span>
           </h2>
           <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
-            Basé à Paris, je travaille avec des rappeurs émergents, des labels
-            indépendants et des marques streetwear pour donner une image à leur
-            son. Lumière dure, contrastes profonds, mouvement — chaque frame
-            raconte la rue.
+            Based in Paris, I work with emerging rappers, independent labels and
+            streetwear brands to give their sound a face. Hard light, deep
+            contrast, movement — every frame tells the story of the street.
           </p>
 
           <div className="mt-8 grid grid-cols-3 gap-4 border-y border-border py-6">
