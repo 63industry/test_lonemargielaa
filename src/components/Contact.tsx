@@ -48,7 +48,7 @@ export function Contact() {
       form.reset();
       setProjectType("");
       setBudget("");
-      toast.success("Message envoyé. Je te recontacte sous 48h.");
+      toast.success("Message sent. I'll get back to you within 48h.");
     }, 800);
   };
 
