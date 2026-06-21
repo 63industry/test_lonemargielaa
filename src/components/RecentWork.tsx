@@ -1,8 +1,8 @@
 import { useParallax } from "@/hooks/use-parallax";
-import work4 from "@/assets/work-4.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
-import work5 from "@/assets/work-5.jpg";
+import tk7 from "@/assets/tk-7.jpg";
+import tk8 from "@/assets/tk-8.jpg";
+import tk4 from "@/assets/tk-4.jpg";
+import tk5 from "@/assets/tk-5.jpg";
 
 export function RecentWork() {
   const p = useParallax(0.06);
@@ -22,10 +22,10 @@ export function RecentWork() {
         </div>
 
         <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:grid-rows-2">
-          <Tile className="col-span-2 row-span-2 aspect-square sm:aspect-auto" src={work4} w={1200} h={1500} title="Neon Nights" sub="Urban lifestyle series" big />
-          <Tile className="aspect-square" src={work3} w={900} h={1200} title="Cold Gaze" sub="Portrait" />
-          <Tile className="aspect-square" src={work5} w={1200} h={900} title="Grails" sub="Brand" />
-          <Tile className="col-span-2 aspect-[2/1]" src={work2} w={1200} h={900} title="Mainstage" sub="Concert / Video" />
+          <Tile className="col-span-2 row-span-2 aspect-square sm:aspect-auto" src={tk7} w={1200} h={1500} title="Neon Nights" sub="Shibuya from above" big />
+          <Tile className="aspect-square" src={tk8} w={1200} h={900} title="Expressway" sub="Cityscape" />
+          <Tile className="aspect-square" src={tk4} w={900} h={1200} title="Fuji-San" sub="Skyline" />
+          <Tile className="col-span-2 aspect-[2/1]" src={tk5} w={1200} h={900} title="Shutokō" sub="Aerial / Night" />
         </div>
       </div>
     </section>

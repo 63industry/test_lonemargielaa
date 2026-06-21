@@ -26,7 +26,7 @@ export function SiteNav() {
     >
       <div className="mx-auto grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 sm:flex sm:justify-between sm:px-8">
         <a href="#top" className="min-w-0 font-display text-xl uppercase tracking-tight">
-          NØIR<span className="text-acid">.</span>FRAME
+          LONEMARGIELAA
         </a>
 
         <nav className="hidden items-center gap-8 sm:flex">

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
-import work5 from "@/assets/work-5.jpg";
-import work6 from "@/assets/work-6.jpg";
-import work4 from "@/assets/work-4.jpg";
+import tk11 from "@/assets/tk-11.jpg";
+import tk10 from "@/assets/tk-10.jpg";
+import tk12 from "@/assets/tk-12.jpg";
+import tk13 from "@/assets/tk-13.jpg";
+import tk1 from "@/assets/tk-1.jpg";
+import tk6 from "@/assets/tk-6.jpg";
 
 type Kind = "all" | "photo" | "video";
 
@@ -19,12 +19,12 @@ interface Item {
 }
 
 const items: Item[] = [
-  { src: work3, title: "Lil Vyper — Portrait", tag: "Editorial", kind: "photo", w: 900, h: 1200, span: "row-span-2" },
-  { src: work2, title: "Live @ Trabendo", tag: "Music Video / Live", kind: "video", w: 1200, h: 900 },
-  { src: work1, title: "FW Lookbook", tag: "Streetwear", kind: "photo", w: 900, h: 1200 },
-  { src: work6, title: "On Set — Music Video", tag: "Rap Video", kind: "video", w: 1200, h: 1200, span: "row-span-2" },
-  { src: work5, title: "Grail Product", tag: "Brand", kind: "photo", w: 1200, h: 900 },
-  { src: work4, title: "Nightwalk — Visual", tag: "Lifestyle", kind: "video", w: 1200, h: 1500 },
+  { src: tk11, title: "After Hours", tag: "Portrait", kind: "photo", w: 900, h: 1200, span: "row-span-2" },
+  { src: tk10, title: "Yokochō", tag: "Night Street", kind: "video", w: 1200, h: 900 },
+  { src: tk12, title: "Wu-World", tag: "Streetwear", kind: "photo", w: 900, h: 1200 },
+  { src: tk13, title: "Backstreets", tag: "Night Visual", kind: "video", w: 1200, h: 1200, span: "row-span-2" },
+  { src: tk1, title: "Lowered", tag: "Car Culture", kind: "photo", w: 1200, h: 900 },
+  { src: tk6, title: "Karaoke-Kan", tag: "Cityscape", kind: "video", w: 1200, h: 1500 },
 ];
 
 const filters: { id: Kind; label: string }[] = [
@@ -79,15 +79,6 @@ export function Showcase() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent opacity-90" />
 
-              {item.kind === "video" && (
-                <div className="absolute inset-0 grid place-items-center">
-                  <span className="grid h-16 w-16 place-items-center rounded-full border border-acid bg-background/40 text-acid backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
-                    <svg width="20" height="22" viewBox="0 0 20 22" fill="currentColor">
-                      <path d="M0 0l20 11L0 22z" />
-                    </svg>
-                  </span>
-                </div>
-              )}
 
               <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5">
                 <div>

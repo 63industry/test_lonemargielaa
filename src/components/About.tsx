@@ -1,4 +1,4 @@
-import aboutPortrait from "@/assets/about-portrait.jpg";
+import aboutPortrait from "@/assets/tk-3.jpg";
 
 const stats = [
   { num: "120+", label: "Videos shot" },

@@ -15,9 +15,7 @@ const schema = z.object({
 });
 
 const socials = [
-  { label: "Instagram", href: "https://instagram.com", handle: "@noir.frame" },
-  { label: "YouTube", href: "https://youtube.com", handle: "/noirframe" },
-  { label: "TikTok", href: "https://tiktok.com", handle: "@noir.frame" },
+  { label: "Instagram", href: "https://instagram.com/lonemargielaa", handle: "@lonemargielaa" },
 ];
 
 export function Contact() {

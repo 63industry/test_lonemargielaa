@@ -12,13 +12,13 @@ import { Footer } from "@/components/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "NØIR.FRAME — Streetwear Photographer & Videographer / Rap Visuals" },
+      { title: "LONEMARGIELAA — Streetwear Photographer & Videographer / Rap Visuals" },
       {
         name: "description",
         content:
           "Creative director, photographer and videographer based in Paris. Rap music videos, streetwear lookbooks, artist portraits and urban visuals. Book a shoot or a video.",
       },
-      { property: "og:title", content: "NØIR.FRAME — Urban Visuals" },
+      { property: "og:title", content: "LONEMARGIELAA — Urban Visuals" },
       {
         property: "og:description",
         content:

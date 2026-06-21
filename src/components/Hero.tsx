@@ -2,7 +2,7 @@ import { Magnetic } from "./Magnetic";
 import { useParallax } from "@/hooks/use-parallax";
 import chromeLens from "@/assets/chrome-lens.png";
 import vinyl from "@/assets/vinyl.png";
-import heroMain from "@/assets/hero-main.jpg";
+import heroMain from "@/assets/tk-2.jpg";
 
 export function Hero() {
   const lens = useParallax(0.08);
