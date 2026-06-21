@@ -3,8 +3,8 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { Magnetic } from "./Magnetic";
 
-const projectTypes = ["Clip vidéo", "Marque Streetwear", "Événement", "Portrait"];
-const budgets = ["< 1k€", "1k–3k€", "3k–8k€", "8k€ +"];
+const projectTypes = ["Music Video", "Streetwear Brand", "Event", "Portrait"];
+const budgets = ["< $1k", "$1k–3k", "$3k–8k", "$8k +"];
 
 const schema = z.object({
   name: z.string().trim().min(2, "Nom requis").max(80),
