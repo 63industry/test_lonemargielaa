@@ -1,9 +1,9 @@
 import aboutPortrait from "@/assets/about-portrait.jpg";
 
 const stats = [
-  { num: "120+", label: "Clips réalisés" },
-  { num: "60+", label: "Marques" },
-  { num: "8 ans", label: "Sur le terrain" },
+  { num: "120+", label: "Videos shot" },
+  { num: "60+", label: "Brands" },
+  { num: "8 yrs", label: "On the field" },
 ];
 
 const collabs = ["Corteiz", "Trapland", "Booska-P", "Wrung", "Sneakers FR", "Hood Sessions"];
