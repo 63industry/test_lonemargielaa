@@ -35,9 +35,9 @@
   --color-electric: var(--electric);
   --color-cyber: var(--cyber);
 
-  --font-display: "Anton", "Arial Narrow", sans-serif;
-  --font-sans: "Space Grotesk", sans-serif;
-  --font-mono: "Space Mono", monospace;
+  --font-display: var(--next-font-display, "Anton"), "Arial Narrow", sans-serif;
+  --font-sans: var(--next-font-sans, "Space Grotesk"), sans-serif;
+  --font-mono: var(--next-font-mono, "Space Mono"), monospace;
 }
 
 :root {

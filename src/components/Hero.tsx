@@ -5,8 +5,8 @@ import { Magnetic } from "./Magnetic";
 import { useParallax } from "@/hooks/use-parallax";
 import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/i18n";
-import chromeLens from "@/assets/chrome-lens.png";
-import vinyl from "@/assets/vinyl.png";
+import chromeLens from "@/assets/chrome-lens.webp";
+import vinyl from "@/assets/vinyl.webp";
 import lonemLogo from "@/assets/lonem-logo.png";
 import heroPoster from "@/assets/tk-2.webp";
 

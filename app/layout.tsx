@@ -1,6 +1,26 @@
 import type { Metadata } from "next";
+import { Anton, Space_Grotesk, Space_Mono } from "next/font/google";
 import { Providers } from "./providers";
 import "./globals.css";
+
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--next-font-display",
+  display: "swap",
+});
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--next-font-sans",
+  display: "swap",
+});
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--next-font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "LONEMARGIELAA — Streetwear Photographer & Videographer / Rap Visuals",
@@ -18,17 +38,12 @@ const themeScript = `(function(){try{var s=localStorage.getItem('theme');var d=w
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
-        />
-      </head>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${anton.variable} ${spaceGrotesk.variable} ${spaceMono.variable}`}
+    >
       <body className="grain">
-        {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Providers>{children}</Providers>
       </body>
