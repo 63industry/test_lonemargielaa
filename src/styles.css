@@ -42,8 +42,8 @@
 
 :root {
   --radius: 0.25rem;
-  --acid: oklch(0.91 0.22 123);
-  --acid-foreground: oklch(0.12 0 0);
+  --acid: oklch(0.52 0.22 123);
+  --acid-foreground: oklch(0.97 0 0);
   --electric: oklch(0.62 0.24 27);
   --cyber: oklch(0.93 0.2 102);
   --gradient-acid: linear-gradient(135deg, var(--acid), var(--cyber));
@@ -74,6 +74,8 @@
 }
 
 .dark {
+  --acid: oklch(0.91 0.22 123);
+  --acid-foreground: oklch(0.12 0 0);
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.97 0 0);
   --card: oklch(0.18 0 0);

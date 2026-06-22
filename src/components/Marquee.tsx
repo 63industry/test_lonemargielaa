@@ -1,5 +1,5 @@
 interface MarqueeProps {
-  items: string[];
+  items: readonly string[];
   className?: string;
 }
 

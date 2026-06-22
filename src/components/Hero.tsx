@@ -4,7 +4,8 @@ import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/i18n";
 import chromeLens from "@/assets/chrome-lens.png";
 import vinyl from "@/assets/vinyl.png";
-import heroMain from "@/assets/tk-2.webp";
+import lonemLogo from "@/assets/lonem-logo.png";
+import heroPoster from "@/assets/tk-2.webp";
 
 export function Hero() {
   const lens = useParallax(0.08);
@@ -34,6 +35,12 @@ export function Hero() {
         <p className="font-mono text-xs uppercase tracking-[0.35em] text-acid">
           {t.hero.tagline[lang]}
         </p>
+
+        <img
+          src={lonemLogo}
+          alt="LONEMARGIELAA"
+          className="mt-7 block h-auto w-[min(44rem,88%)] invert dark:invert-0"
+        />
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <p className="max-w-md font-sans text-base text-muted-foreground sm:text-lg">
@@ -70,14 +77,21 @@ export function Hero() {
           Scroll
         </a>
 
-        <div className="mt-8 overflow-hidden border border-border">
-          <img
-            src={heroMain}
-            alt="Streetwear portrait in chiaroscuro lighting"
-            width={1280}
-            height={1600}
-            className="h-[42vh] w-full object-cover object-[center_25%] grayscale transition-all duration-700 hover:grayscale-0 sm:h-[55vh]"
+        <div className="relative mt-8 overflow-hidden border border-border">
+          <video
+            src="/shanks-freestyle.webm"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={heroPoster}
+            className="block h-[42vh] w-full object-cover object-[center_25%] sm:h-[55vh]"
           />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/85 to-transparent to-45%" />
+          <div className="absolute bottom-0 left-0 p-6">
+            <p className="font-display text-3xl uppercase tracking-tight">Shanks</p>
+            <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-acid">Freestyle Armageddon</p>
+          </div>
         </div>
       </div>
     </section>

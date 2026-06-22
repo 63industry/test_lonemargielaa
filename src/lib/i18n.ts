@@ -50,4 +50,8 @@ export const t = {
     sending: { en: "Sending...",       fr: "Envoi..." },
     types:   { en: ["Music Video", "Streetwear Brand", "Event", "Portrait"], fr: ["Clip", "Marque Streetwear", "Événement", "Portrait"] },
   },
+  marquee: {
+    en: ["Streetwear", "Rap Videos", "Portraits", "Brand Films", "Lifestyle", "Concerts"],
+    fr: ["Streetwear", "Clips Rap", "Portraits", "Films de Marque", "Lifestyle", "Concerts"],
+  },
 } as const;

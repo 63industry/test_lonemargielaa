@@ -8,7 +8,8 @@ import { RecentWork } from "@/components/RecentWork";
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
-import { LangProvider } from "@/lib/lang-context";
+import { LangProvider, useLang } from "@/lib/lang-context";
+import { t } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,21 +32,14 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-function Index() {
+function IndexInner() {
+  const { lang } = useLang();
   return (
-    <LangProvider>
     <main className="relative">
       <SiteNav />
       <Hero />
       <Marquee
-        items={[
-          "Streetwear",
-          "Rap Videos",
-          "Portraits",
-          "Brand Films",
-          "Lifestyle",
-          "Concerts",
-        ]}
+        items={t.marquee[lang]}
         className="border-y border-border py-6"
       />
       <Showcase />
@@ -55,6 +49,13 @@ function Index() {
       <Footer />
       <Toaster position="top-center" theme="dark" />
     </main>
+  );
+}
+
+function Index() {
+  return (
+    <LangProvider>
+      <IndexInner />
     </LangProvider>
   );
 }
