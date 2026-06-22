@@ -3,16 +3,15 @@
 import { useEffect, useState } from "react";
 
 export function useTheme() {
-  // Start with true (dark) for SSR, then sync with DOM after mount
-  const [dark, setDark] = useState(true);
+  // null = not yet initialized (prevents writing localStorage before reading DOM)
+  const [dark, setDark] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // The inline script in layout.tsx already set the correct class —
-    // read it directly from the DOM instead of duplicating localStorage logic
     setDark(document.documentElement.classList.contains("dark"));
   }, []);
 
   useEffect(() => {
+    if (dark === null) return;
     const root = document.documentElement;
     if (dark) {
       root.classList.add("dark");
@@ -22,5 +21,5 @@ export function useTheme() {
     localStorage.setItem("theme", dark ? "dark" : "light");
   }, [dark]);
 
-  return { dark, toggle: () => setDark((v) => !v) };
+  return { dark: dark ?? true, toggle: () => setDark((v) => !(v ?? true)) };
 }
