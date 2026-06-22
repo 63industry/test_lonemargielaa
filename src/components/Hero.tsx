@@ -43,6 +43,7 @@ export function Hero() {
           src={lonemLogo}
           alt="LONEMARGIELAA"
           className="mt-7 block h-auto w-[min(44rem,88%)] invert dark:invert-0"
+          priority
         />
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
@@ -87,6 +88,7 @@ export function Hero() {
             muted
             loop
             playsInline
+            preload="auto"
             poster={heroPoster.src}
             className="block h-[42vh] w-full object-cover object-[center_25%] sm:h-[55vh]"
           />

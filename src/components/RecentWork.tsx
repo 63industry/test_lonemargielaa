@@ -39,6 +39,7 @@ export function RecentWork() {
               muted
               loop
               playsInline
+              preload="metadata"
               poster={tk7.src}
               className="block h-full w-full object-cover contrast-125 brightness-95"
             />
@@ -61,6 +62,7 @@ export function RecentWork() {
               muted
               loop
               playsInline
+              preload="metadata"
               poster={tk4.src}
               className="block h-full w-full object-cover contrast-125 brightness-95"
             />
