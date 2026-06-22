@@ -23,7 +23,7 @@ export function Hero() {
         style={{ transform: `translateY(${lens.offset}px)` }}
         className="float-slow pointer-events-none absolute -right-10 top-24 w-48 opacity-90 sm:right-10 sm:w-72 lg:w-96"
       >
-        <Image src={chromeLens} alt="" className="h-auto w-full" />
+        <Image src={chromeLens} alt="" className="h-auto w-full" priority />
       </div>
       <div
         ref={disc.ref as React.Ref<HTMLDivElement>}
