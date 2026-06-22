@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 import { Magnetic } from "./Magnetic";
-
-const links = [
-  { label: "Work", href: "#showcase" },
-  { label: "Recent", href: "#recent" },
-  { label: "About", href: "#about" },
-];
+import { useTheme } from "@/hooks/use-theme";
+import { useLang } from "@/lib/lang-context";
+import { t } from "@/lib/i18n";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { dark, toggle } = useTheme();
+  const { lang, toggle: toggleLang } = useLang();
+
+  const links = [
+    { label: t.nav.work[lang],   href: "#showcase" },
+    { label: t.nav.recent[lang], href: "#recent" },
+    { label: t.nav.about[lang],  href: "#about" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -39,12 +44,26 @@ export function SiteNav() {
               {l.label}
             </a>
           ))}
+          <button
+            onClick={toggle}
+            aria-label="Toggle theme"
+            className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-acid"
+          >
+            {dark ? "☾ Dark" : "☀ Light"}
+          </button>
+          <button
+            onClick={toggleLang}
+            aria-label="Toggle language"
+            className="text-base transition-opacity hover:opacity-70"
+          >
+            {lang === "en" ? "🇬🇧" : "🇫🇷"}
+          </button>
           <Magnetic strength={0.5}>
             <a
               href="#contact"
               className="inline-block bg-acid px-5 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-acid-foreground transition-shadow hover:shadow-[0_0_30px_-4px_var(--acid)]"
             >
-              Book
+              {t.nav.book[lang]}
             </a>
           </Magnetic>
         </nav>
@@ -60,7 +79,7 @@ export function SiteNav() {
 
       {open && (
         <nav className="flex flex-col gap-1 border-t border-border bg-background px-5 py-4 sm:hidden">
-          {[...links, { label: "Book", href: "#contact" }].map((l) => (
+          {[...links, { label: t.nav.book[lang], href: "#contact" }].map((l) => (
             <a
               key={l.href}
               href={l.href}

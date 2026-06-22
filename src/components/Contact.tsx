@@ -2,26 +2,30 @@ import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Magnetic } from "./Magnetic";
-
-const projectTypes = ["Music Video", "Streetwear Brand", "Event", "Portrait"];
-const budgets = ["< $1k", "$1k–3k", "$3k–8k", "$8k +"];
-
-const schema = z.object({
-  name: z.string().trim().min(2, "Name is required").max(80),
-  email: z.string().trim().email("Invalid email").max(160),
-  projectType: z.string().min(1, "Pick a project type"),
-  budget: z.string().min(1, "Pick a budget"),
-  message: z.string().trim().min(10, "Add a few details").max(1000),
-});
+import { useLang } from "@/lib/lang-context";
+import { t } from "@/lib/i18n";
 
 const socials = [
   { label: "Instagram", href: "https://instagram.com/lonemargielaa", handle: "@lonemargielaa" },
+  { label: "Email", href: "https://mail.google.com/mail/?view=cm&to=97lonemargielaa@gmail.com", handle: "97lonemargielaa@gmail.com" },
 ];
 
 export function Contact() {
   const [projectType, setProjectType] = useState("");
-  const [budget, setBudget] = useState("");
+
   const [sending, setSending] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const { lang } = useLang();
+
+  const projectTypes = t.contact.types[lang];
+
+  const schema = z.object({
+    name: z.string().trim().min(2, lang === "fr" ? "Nom requis" : "Name is required").max(80),
+    email: z.string().trim().email(lang === "fr" ? "Email invalide" : "Invalid email").max(160),
+    projectType: z.string().min(1, lang === "fr" ? "Choisis un type de projet" : "Pick a project type"),
+
+    message: z.string().trim().min(10, lang === "fr" ? "Ajoute quelques détails" : "Add a few details").max(1000),
+  });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,7 +34,7 @@ export function Contact() {
       name: (form.elements.namedItem("name") as HTMLInputElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       projectType,
-      budget,
+
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
     };
 
@@ -41,28 +45,38 @@ export function Contact() {
     }
 
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
-      form.reset();
-      setProjectType("");
-      setBudget("");
-      toast.success("Message sent. I'll get back to you within 48h.");
-    }, 800);
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        "form-name": "contact",
+        ...data,
+      }).toString(),
+    })
+      .then(() => {
+        setSending(false);
+        form.reset();
+        setProjectType("");
+        setSubmitted(true);
+      })
+      .catch(() => {
+        setSending(false);
+        toast.error(lang === "fr" ? "Erreur, réessaie." : "Something went wrong, try again.");
+      });
   };
 
   return (
     <section id="contact" className="relative border-t border-border py-20 sm:py-28">
       <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-[1fr_1.1fr]">
         <div>
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">04 — Booking</p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">{t.contact.label[lang]}</p>
           <h2 className="display-title mt-3 text-[clamp(2.6rem,9vw,7rem)]">
-            Let's
+            {t.contact.title1[lang]}
             <br />
-            <span className="text-acid">collaborate</span>?
+            <span className="text-acid">{t.contact.title2[lang]}</span>?
           </h2>
           <p className="mt-6 max-w-md text-base text-muted-foreground sm:text-lg">
-            A music video, a brand shoot or an event to immortalize? Describe
-            your project and I'll get back to you fast.
+            {t.contact.desc[lang]}
           </p>
 
           <div className="mt-10 space-y-3">
@@ -76,9 +90,7 @@ export function Contact() {
               >
                 <span className="hover-slide font-display text-2xl uppercase tracking-tight sm:text-4xl">
                   <span>{s.label}</span>
-                  <span data-clone className="text-acid">
-                    {s.label}
-                  </span>
+                  <span data-clone className="text-acid">{s.label}</span>
                 </span>
                 <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground transition-colors group-hover:text-acid">
                   {s.handle} ↗
@@ -88,60 +100,59 @@ export function Contact() {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-          <Field label="Name">
-            <input name="name" type="text" maxLength={80} className={inputCls} placeholder="Your name / project" />
+        {submitted ? (
+          <div className="flex flex-col justify-center border border-border p-10 gap-6">
+            <p className="font-display text-5xl uppercase tracking-tight text-acid">
+              {lang === "fr" ? "Reçu ✓" : "Received ✓"}
+            </p>
+            <p className="font-mono text-sm text-muted-foreground">
+              {lang === "fr"
+                ? "Message bien reçu. Je te réponds dans les 48h."
+                : "Your message is in. I'll get back to you within 48h."}
+            </p>
+            <button
+              onClick={() => setSubmitted(false)}
+              className="self-start border border-border px-5 py-2 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:border-acid hover:text-acid"
+            >
+              {lang === "fr" ? "Nouveau message" : "Send another"}
+            </button>
+          </div>
+        ) : (
+        <form onSubmit={handleSubmit} name="contact" data-netlify="true" className="flex flex-col gap-6">
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="projectType" value={projectType} />
+          <Field label={t.contact.name[lang]}>
+            <input name="name" type="text" maxLength={80} className={inputCls} placeholder={t.contact.namePh[lang]} />
           </Field>
-          <Field label="Email">
+          <Field label={t.contact.email[lang]}>
             <input name="email" type="email" maxLength={160} className={inputCls} placeholder="you@email.com" />
           </Field>
 
           <div>
             <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              Project type
+              {t.contact.type[lang]}
             </span>
             <div className="mt-3 flex flex-wrap gap-2">
-              {projectTypes.map((t) => (
+              {projectTypes.map((type) => (
                 <button
-                  key={t}
+                  key={type}
                   type="button"
-                  onClick={() => setProjectType(t)}
+                  onClick={() => setProjectType(type)}
                   className={`px-4 py-2 font-mono text-xs uppercase tracking-[0.15em] transition-colors ${
-                    projectType === t
+                    projectType === type
                       ? "bg-acid text-acid-foreground"
                       : "border border-border text-muted-foreground hover:border-acid"
                   }`}
                 >
-                  {t}
+                  {type}
                 </button>
               ))}
             </div>
           </div>
 
-          <div>
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              Budget
-            </span>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {budgets.map((b) => (
-                <button
-                  key={b}
-                  type="button"
-                  onClick={() => setBudget(b)}
-                  className={`px-4 py-2 font-mono text-xs uppercase tracking-[0.15em] transition-colors ${
-                    budget === b
-                      ? "bg-acid text-acid-foreground"
-                      : "border border-border text-muted-foreground hover:border-acid"
-                  }`}
-                >
-                  {b}
-                </button>
-              ))}
-            </div>
-          </div>
 
-          <Field label="Message">
-            <textarea name="message" rows={4} maxLength={1000} className={inputCls} placeholder="Tell me about your project..." />
+          <Field label={t.contact.message[lang]}>
+            <textarea name="message" rows={4} maxLength={1000} className={inputCls} placeholder={t.contact.msgPh[lang]} />
           </Field>
 
           <Magnetic strength={0.3}>
@@ -150,10 +161,11 @@ export function Contact() {
               disabled={sending}
               className="w-full bg-acid px-7 py-4 font-mono text-sm font-bold uppercase tracking-[0.2em] text-acid-foreground transition-shadow hover:shadow-[0_0_40px_-6px_var(--acid)] disabled:opacity-60"
             >
-              {sending ? "Sending..." : "Send request"}
+              {sending ? t.contact.sending[lang] : t.contact.send[lang]}
             </button>
           </Magnetic>
         </form>
+        )}
       </div>
     </section>
   );

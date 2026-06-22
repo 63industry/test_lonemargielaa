@@ -1,23 +1,26 @@
 import { useParallax } from "@/hooks/use-parallax";
-import tk7 from "@/assets/tk-7.jpg";
-import tk8 from "@/assets/tk-8.jpg";
-import tk4 from "@/assets/tk-4.jpg";
-import tk5 from "@/assets/tk-5.jpg";
+import { useLang } from "@/lib/lang-context";
+import { t } from "@/lib/i18n";
+import tk7 from "@/assets/tk-7.webp";
+import tk8 from "@/assets/tk-8.webp";
+import tk4 from "@/assets/tk-4.webp";
+import tk5 from "@/assets/tk-5.webp";
 
 export function RecentWork() {
   const p = useParallax(0.06);
+  const { lang } = useLang();
 
   return (
     <section id="recent" className="relative overflow-hidden border-t border-border py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col gap-3">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">02 — Latest drops</p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">{t.recent.label[lang]}</p>
           <h2
             ref={p.ref as React.Ref<HTMLHeadingElement>}
             style={{ transform: `translateY(${p.offset}px)` }}
             className="display-title text-[clamp(2.4rem,8vw,6rem)]"
           >
-            Recent <span className="text-stroke">projects</span>
+            {t.recent.title[lang]} <span className="text-stroke">{t.recent.title2[lang]}</span>
           </h2>
         </div>
 
@@ -33,21 +36,9 @@ export function RecentWork() {
 }
 
 function Tile({
-  src,
-  title,
-  sub,
-  className,
-  big,
-  w,
-  h,
+  src, title, sub, className, big, w, h,
 }: {
-  src: string;
-  title: string;
-  sub: string;
-  className?: string;
-  big?: boolean;
-  w: number;
-  h: number;
+  src: string; title: string; sub: string; className?: string; big?: boolean; w: number; h: number;
 }) {
   return (
     <article className={`group relative overflow-hidden border border-border ${className ?? ""}`}>
@@ -61,9 +52,7 @@ function Tile({
       />
       <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
       <div className="absolute inset-x-0 bottom-0 p-4">
-        <p className={`font-display uppercase tracking-tight ${big ? "text-3xl sm:text-5xl" : "text-lg"}`}>
-          {title}
-        </p>
+        <p className={`font-display uppercase tracking-tight ${big ? "text-3xl sm:text-5xl" : "text-lg"}`}>{title}</p>
         <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-acid">{sub}</p>
       </div>
     </article>

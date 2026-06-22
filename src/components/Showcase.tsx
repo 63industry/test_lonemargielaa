@@ -1,10 +1,12 @@
 import { useState } from "react";
-import tk11 from "@/assets/tk-11.jpg";
-import tk10 from "@/assets/tk-10.jpg";
-import tk12 from "@/assets/tk-12.jpg";
-import tk13 from "@/assets/tk-13.jpg";
-import tk1 from "@/assets/tk-1.jpg";
-import tk6 from "@/assets/tk-6.jpg";
+import { useLang } from "@/lib/lang-context";
+import { t } from "@/lib/i18n";
+import tk11 from "@/assets/tk-11.webp";
+import tk10 from "@/assets/tk-10.webp";
+import tk12 from "@/assets/tk-12.webp";
+import tk13 from "@/assets/tk-13.webp";
+import tk1 from "@/assets/tk-1.webp";
+import tk6 from "@/assets/tk-6.webp";
 
 type Kind = "all" | "photo" | "video";
 
@@ -27,24 +29,23 @@ const items: Item[] = [
   { src: tk6, title: "Karaoke-Kan", tag: "Cityscape", kind: "video", w: 1200, h: 1500 },
 ];
 
-const filters: { id: Kind; label: string }[] = [
-  { id: "all", label: "All" },
-  { id: "photo", label: "Photo" },
-  { id: "video", label: "Video" },
-];
-
 export function Showcase() {
   const [active, setActive] = useState<Kind>("all");
+  const { lang } = useLang();
   const shown = items.filter((i) => active === "all" || i.kind === active);
+
+  const filters = [
+    { id: "all" as Kind,   label: t.showcase.all[lang] },
+    { id: "photo" as Kind, label: t.showcase.photo[lang] },
+    { id: "video" as Kind, label: t.showcase.video[lang] },
+  ];
 
   return (
     <section id="showcase" className="relative border-t border-border py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4">
-          <div className="min-w-0">
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">01 — Portfolio</p>
-            <h2 className="display-title mt-3 text-[clamp(2.4rem,8vw,6rem)]">Showcase</h2>
-          </div>
+        <div className="min-w-0">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">{t.showcase.label[lang]}</p>
+          <h2 className="display-title mt-3 text-[clamp(2.4rem,8vw,6rem)]">{t.showcase.title[lang]}</h2>
         </div>
 
         <div className="mt-8 flex flex-wrap gap-2">
@@ -64,10 +65,10 @@ export function Showcase() {
         </div>
 
         <div className="mt-10 grid auto-rows-[230px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {shown.map((item) => (
+          {shown.map((item, i) => (
             <article
               key={item.title}
-              className={`group relative overflow-hidden border border-border ${item.span ?? ""}`}
+              className={`group relative overflow-hidden border border-border ${item.span ?? ""} ${i >= 4 ? "hidden sm:block" : ""}`}
             >
               <img
                 src={item.src}
@@ -78,14 +79,10 @@ export function Showcase() {
                 className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent opacity-90" />
-
-
               <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5">
                 <div>
                   <p className="font-display text-xl uppercase tracking-tight">{item.title}</p>
-                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-acid">
-                    {item.tag}
-                  </p>
+                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-acid">{item.tag}</p>
                 </div>
               </div>
             </article>

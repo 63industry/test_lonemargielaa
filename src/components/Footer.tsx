@@ -5,9 +5,19 @@ export function Footer() {
         <p className="font-display text-2xl uppercase tracking-tight">
           LONEMARGIELAA
         </p>
-        <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">
-          © {new Date().getFullYear()} — Urban Visuals / Paris
-        </p>
+        <div className="flex flex-col items-start gap-1 sm:items-end">
+          <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">
+            © {new Date().getFullYear()} — Fribourg (CH)
+          </p>
+          <a
+            href="https://63industry.netlify.app"
+            target="_blank"
+            rel="noreferrer"
+            className="font-mono text-[0.65rem] uppercase tracking-[0.15em] text-muted-foreground/50 transition-colors hover:text-acid"
+          >
+            Made by 63industry
+          </a>
+        </div>
       </div>
     </footer>
   );

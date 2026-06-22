@@ -16,9 +16,23 @@ dist-ssr
 .nitro
 *.local
 
+# Claude
+.claude/
+
+# Bun
+.bun/
+
+# Env
+.env
+.env.*
+!.env.example
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
+
+# Netlify
+.netlify/
 
 # Editor directories and files
 .vscode/*

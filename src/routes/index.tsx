@@ -8,6 +8,7 @@ import { RecentWork } from "@/components/RecentWork";
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { LangProvider } from "@/lib/lang-context";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,9 +17,9 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Creative director, photographer and videographer based in Paris. Rap music videos, streetwear lookbooks, artist portraits and urban visuals. Book a shoot or a video.",
+          "Creative director, photographer and videographer based in Fribourg (CH). Rap music videos, streetwear lookbooks, artist portraits and urban visuals. Book a shoot or a video.",
       },
-      { property: "og:title", content: "LONEMARGIELAA — Urban Visuals" },
+      { property: "og:title", content: "LONEMARGIELAA" },
       {
         property: "og:description",
         content:
@@ -32,6 +33,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
+    <LangProvider>
     <main className="relative">
       <SiteNav />
       <Hero />
@@ -53,5 +55,6 @@ function Index() {
       <Footer />
       <Toaster position="top-center" theme="dark" />
     </main>
+    </LangProvider>
   );
 }
