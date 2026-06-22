@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
@@ -7,7 +9,11 @@ import { t } from "@/lib/i18n";
 
 const socials = [
   { label: "Instagram", href: "https://instagram.com/lonemargielaa", handle: "@lonemargielaa" },
-  { label: "Email", href: "https://mail.google.com/mail/?view=cm&to=97lonemargielaa@gmail.com", handle: "97lonemargielaa@gmail.com" },
+  {
+    label: "Email",
+    href: "https://mail.google.com/mail/?view=cm&to=97lonemargielaa@gmail.com",
+    handle: "97lonemargielaa@gmail.com",
+  },
 ];
 
 export function Contact() {
@@ -20,11 +26,25 @@ export function Contact() {
   const projectTypes = t.contact.types[lang];
 
   const schema = z.object({
-    name: z.string().trim().min(2, lang === "fr" ? "Nom requis" : "Name is required").max(80),
-    email: z.string().trim().email(lang === "fr" ? "Email invalide" : "Invalid email").max(160),
-    projectType: z.string().min(1, lang === "fr" ? "Choisis un type de projet" : "Pick a project type"),
+    name: z
+      .string()
+      .trim()
+      .min(2, lang === "fr" ? "Nom requis" : "Name is required")
+      .max(80),
+    email: z
+      .string()
+      .trim()
+      .email(lang === "fr" ? "Email invalide" : "Invalid email")
+      .max(160),
+    projectType: z
+      .string()
+      .min(1, lang === "fr" ? "Choisis un type de projet" : "Pick a project type"),
 
-    message: z.string().trim().min(10, lang === "fr" ? "Ajoute quelques détails" : "Add a few details").max(1000),
+    message: z
+      .string()
+      .trim()
+      .min(10, lang === "fr" ? "Ajoute quelques détails" : "Add a few details")
+      .max(1000),
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -69,7 +89,9 @@ export function Contact() {
     <section id="contact" className="relative border-t border-border py-20 sm:py-28">
       <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-[1fr_1.1fr]">
         <div>
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">{t.contact.label[lang]}</p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">
+            {t.contact.label[lang]}
+          </p>
           <h2 className="display-title mt-3 text-[clamp(2.6rem,9vw,7rem)]">
             {t.contact.title1[lang]}
             <br />
@@ -90,7 +112,9 @@ export function Contact() {
               >
                 <span className="hover-slide font-display text-2xl uppercase tracking-tight sm:text-4xl">
                   <span>{s.label}</span>
-                  <span data-clone className="text-acid">{s.label}</span>
+                  <span data-clone className="text-acid">
+                    {s.label}
+                  </span>
                 </span>
                 <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground transition-colors group-hover:text-acid">
                   {s.handle} ↗
@@ -118,53 +142,75 @@ export function Contact() {
             </button>
           </div>
         ) : (
-        <form onSubmit={handleSubmit} name="contact" data-netlify="true" className="flex flex-col gap-6">
-          <input type="hidden" name="form-name" value="contact" />
-          <input type="hidden" name="projectType" value={projectType} />
-          <Field label={t.contact.name[lang]}>
-            <input name="name" type="text" maxLength={80} className={inputCls} placeholder={t.contact.namePh[lang]} />
-          </Field>
-          <Field label={t.contact.email[lang]}>
-            <input name="email" type="email" maxLength={160} className={inputCls} placeholder="you@email.com" />
-          </Field>
+          <form
+            onSubmit={handleSubmit}
+            name="contact"
+            data-netlify="true"
+            className="flex flex-col gap-6"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="projectType" value={projectType} />
+            <Field label={t.contact.name[lang]}>
+              <input
+                name="name"
+                type="text"
+                maxLength={80}
+                className={inputCls}
+                placeholder={t.contact.namePh[lang]}
+              />
+            </Field>
+            <Field label={t.contact.email[lang]}>
+              <input
+                name="email"
+                type="email"
+                maxLength={160}
+                className={inputCls}
+                placeholder="you@email.com"
+              />
+            </Field>
 
-          <div>
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              {t.contact.type[lang]}
-            </span>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {projectTypes.map((type) => (
-                <button
-                  key={type}
-                  type="button"
-                  onClick={() => setProjectType(type)}
-                  className={`px-4 py-2 font-mono text-xs uppercase tracking-[0.15em] transition-colors ${
-                    projectType === type
-                      ? "bg-acid text-acid-foreground"
-                      : "border border-border text-muted-foreground hover:border-acid"
-                  }`}
-                >
-                  {type}
-                </button>
-              ))}
+            <div>
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                {t.contact.type[lang]}
+              </span>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {projectTypes.map((type) => (
+                  <button
+                    key={type}
+                    type="button"
+                    onClick={() => setProjectType(type)}
+                    className={`px-4 py-2 font-mono text-xs uppercase tracking-[0.15em] transition-colors ${
+                      projectType === type
+                        ? "bg-acid text-acid-foreground"
+                        : "border border-border text-muted-foreground hover:border-acid"
+                    }`}
+                  >
+                    {type}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
 
+            <Field label={t.contact.message[lang]}>
+              <textarea
+                name="message"
+                rows={4}
+                maxLength={1000}
+                className={inputCls}
+                placeholder={t.contact.msgPh[lang]}
+              />
+            </Field>
 
-          <Field label={t.contact.message[lang]}>
-            <textarea name="message" rows={4} maxLength={1000} className={inputCls} placeholder={t.contact.msgPh[lang]} />
-          </Field>
-
-          <Magnetic strength={0.3}>
-            <button
-              type="submit"
-              disabled={sending}
-              className="w-full bg-acid px-7 py-4 font-mono text-sm font-bold uppercase tracking-[0.2em] text-acid-foreground transition-shadow hover:shadow-[0_0_40px_-6px_var(--acid)] disabled:opacity-60"
-            >
-              {sending ? t.contact.sending[lang] : t.contact.send[lang]}
-            </button>
-          </Magnetic>
-        </form>
+            <Magnetic strength={0.3}>
+              <button
+                type="submit"
+                disabled={sending}
+                className="w-full bg-acid px-7 py-4 font-mono text-sm font-bold uppercase tracking-[0.2em] text-acid-foreground transition-shadow hover:shadow-[0_0_40px_-6px_var(--acid)] disabled:opacity-60"
+              >
+                {sending ? t.contact.sending[lang] : t.contact.send[lang]}
+              </button>
+            </Magnetic>
+          </form>
         )}
       </div>
     </section>
@@ -177,7 +223,9 @@ const inputCls =
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">{label}</span>
+      <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+        {label}
+      </span>
       {children}
     </label>
   );

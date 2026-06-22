@@ -1,4 +1,7 @@
+"use client";
+
 import { useState } from "react";
+import Image, { type StaticImageData } from "next/image";
 import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/i18n";
 import tk11 from "@/assets/tk-11.webp";
@@ -11,7 +14,7 @@ import tk6 from "@/assets/tk-6.webp";
 type Kind = "all" | "photo" | "video";
 
 interface Item {
-  src: string;
+  src: StaticImageData;
   title: string;
   tag: string;
   kind: "photo" | "video";
@@ -21,10 +24,26 @@ interface Item {
 }
 
 const items: Item[] = [
-  { src: tk11, title: "After Hours", tag: "Portrait", kind: "photo", w: 900, h: 1200, span: "row-span-2" },
+  {
+    src: tk11,
+    title: "After Hours",
+    tag: "Portrait",
+    kind: "photo",
+    w: 900,
+    h: 1200,
+    span: "row-span-2",
+  },
   { src: tk10, title: "Yokochō", tag: "Night Street", kind: "video", w: 1200, h: 900 },
   { src: tk12, title: "Wu-World", tag: "Streetwear", kind: "photo", w: 900, h: 1200 },
-  { src: tk13, title: "Backstreets", tag: "Night Visual", kind: "video", w: 1200, h: 1200, span: "row-span-2" },
+  {
+    src: tk13,
+    title: "Backstreets",
+    tag: "Night Visual",
+    kind: "video",
+    w: 1200,
+    h: 1200,
+    span: "row-span-2",
+  },
   { src: tk1, title: "Lowered", tag: "Car Culture", kind: "photo", w: 1200, h: 900 },
   { src: tk6, title: "Karaoke-Kan", tag: "Cityscape", kind: "video", w: 1200, h: 1500 },
 ];
@@ -35,7 +54,7 @@ export function Showcase() {
   const shown = items.filter((i) => active === "all" || i.kind === active);
 
   const filters = [
-    { id: "all" as Kind,   label: t.showcase.all[lang] },
+    { id: "all" as Kind, label: t.showcase.all[lang] },
     { id: "photo" as Kind, label: t.showcase.photo[lang] },
     { id: "video" as Kind, label: t.showcase.video[lang] },
   ];
@@ -44,8 +63,12 @@ export function Showcase() {
     <section id="showcase" className="relative border-t border-border py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="min-w-0">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">{t.showcase.label[lang]}</p>
-          <h2 className="display-title mt-3 text-[clamp(2.4rem,8vw,6rem)]">{t.showcase.title[lang]}</h2>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">
+            {t.showcase.label[lang]}
+          </p>
+          <h2 className="display-title mt-3 text-[clamp(2.4rem,8vw,6rem)]">
+            {t.showcase.title[lang]}
+          </h2>
         </div>
 
         <div className="mt-8 flex flex-wrap gap-2">
@@ -70,10 +93,9 @@ export function Showcase() {
               key={item.title}
               className={`group relative overflow-hidden border border-border ${item.span ?? ""} ${i >= 4 ? "hidden sm:block" : ""}`}
             >
-              <img
+              <Image
                 src={item.src}
                 alt={item.title}
-                loading="lazy"
                 width={item.w}
                 height={item.h}
                 className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
@@ -82,7 +104,9 @@ export function Showcase() {
               <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5">
                 <div>
                   <p className="font-display text-xl uppercase tracking-tight">{item.title}</p>
-                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-acid">{item.tag}</p>
+                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-acid">
+                    {item.tag}
+                  </p>
                 </div>
               </div>
             </article>

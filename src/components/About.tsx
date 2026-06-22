@@ -1,24 +1,23 @@
+"use client";
+
+import Image from "next/image";
 import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/i18n";
 import aboutPortrait from "@/assets/tk-3.webp";
 
-
 export function About() {
   const { lang } = useLang();
 
-  const stats = [
-    { num: "100+", label: t.about.stat1[lang] },
-  ];
+  const stats = [{ num: "100+", label: t.about.stat1[lang] }];
 
   return (
     <section id="about" className="relative border-t border-border py-12 sm:py-16">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div className="relative">
           <div className="overflow-hidden border border-border">
-            <img
+            <Image
               src={aboutPortrait}
               alt="Portrait of the creative director"
-              loading="lazy"
               width={1000}
               height={1200}
               className="w-full object-cover"
@@ -30,7 +29,9 @@ export function About() {
         </div>
 
         <div>
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">{t.about.label[lang]}</p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-acid">
+            {t.about.label[lang]}
+          </p>
           <h2 className="display-title mt-3 text-[clamp(2.2rem,7vw,5rem)]">
             {t.about.title1[lang]}
             <br />
@@ -44,11 +45,12 @@ export function About() {
             {stats.map((s) => (
               <div key={s.label}>
                 <p className="font-display text-3xl text-acid sm:text-5xl">{s.num}</p>
-                <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.15em] text-muted-foreground">{s.label}</p>
+                <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.15em] text-muted-foreground">
+                  {s.label}
+                </p>
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>

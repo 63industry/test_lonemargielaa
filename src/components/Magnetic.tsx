@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, type ReactNode, type CSSProperties } from "react";
 
 interface MagneticProps {

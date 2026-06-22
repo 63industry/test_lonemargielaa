@@ -47,7 +47,8 @@
   --electric: oklch(0.62 0.24 27);
   --cyber: oklch(0.93 0.2 102);
   --gradient-acid: linear-gradient(135deg, var(--acid), var(--cyber));
-  --shadow-acid: 0 0 0 1px color-mix(in oklab, var(--acid) 50%, transparent),
+  --shadow-acid:
+    0 0 0 1px color-mix(in oklab, var(--acid) 50%, transparent),
     0 12px 40px -12px color-mix(in oklab, var(--acid) 45%, transparent);
   --destructive: oklch(0.62 0.24 27);
   --destructive-foreground: oklch(0.97 0 0);
@@ -64,9 +65,9 @@
   --primary-foreground: oklch(0.12 0 0);
   --secondary: oklch(0.88 0 0);
   --secondary-foreground: oklch(0.12 0 0);
-  --muted: oklch(0.90 0 0);
+  --muted: oklch(0.9 0 0);
   --muted-foreground: oklch(0.45 0 0);
-  --accent: oklch(0.90 0 0);
+  --accent: oklch(0.9 0 0);
   --accent-foreground: oklch(0.12 0 0);
   --border: oklch(0.82 0 0);
   --input: oklch(0.82 0 0);
@@ -166,7 +167,8 @@
 
 /* Slow float for 3D objects */
 @keyframes float-slow {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotate(0deg);
   }
   50% {

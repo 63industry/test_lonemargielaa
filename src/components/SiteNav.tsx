@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { Magnetic } from "./Magnetic";
 import { useTheme } from "@/hooks/use-theme";
@@ -11,9 +13,9 @@ export function SiteNav() {
   const { lang, toggle: toggleLang } = useLang();
 
   const links = [
-    { label: t.nav.work[lang],   href: "#showcase" },
+    { label: t.nav.work[lang], href: "#showcase" },
     { label: t.nav.recent[lang], href: "#recent" },
-    { label: t.nav.about[lang],  href: "#about" },
+    { label: t.nav.about[lang], href: "#about" },
   ];
 
   useEffect(() => {

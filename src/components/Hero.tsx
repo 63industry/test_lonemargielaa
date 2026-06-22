@@ -1,3 +1,6 @@
+"use client";
+
+import Image from "next/image";
 import { Magnetic } from "./Magnetic";
 import { useParallax } from "@/hooks/use-parallax";
 import { useLang } from "@/lib/lang-context";
@@ -14,29 +17,29 @@ export function Hero() {
 
   return (
     <section id="top" className="relative min-h-screen overflow-hidden pt-28">
-      <img
-        ref={lens.ref as React.Ref<HTMLImageElement>}
-        src={chromeLens}
-        alt=""
+      <div
+        ref={lens.ref as React.Ref<HTMLDivElement>}
         aria-hidden
         style={{ transform: `translateY(${lens.offset}px)` }}
         className="float-slow pointer-events-none absolute -right-10 top-24 w-48 opacity-90 sm:right-10 sm:w-72 lg:w-96"
-      />
-      <img
-        ref={disc.ref as React.Ref<HTMLImageElement>}
-        src={vinyl}
-        alt=""
+      >
+        <Image src={chromeLens} alt="" className="h-auto w-full" />
+      </div>
+      <div
+        ref={disc.ref as React.Ref<HTMLDivElement>}
         aria-hidden
         style={{ transform: `translateY(${disc.offset}px)` }}
         className="spin-vinyl pointer-events-none absolute -left-16 bottom-10 w-44 opacity-40 sm:left-2 sm:w-64"
-      />
+      >
+        <Image src={vinyl} alt="" className="h-auto w-full" />
+      </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
         <p className="font-mono text-xs uppercase tracking-[0.35em] text-acid">
           {t.hero.tagline[lang]}
         </p>
 
-        <img
+        <Image
           src={lonemLogo}
           alt="LONEMARGIELAA"
           className="mt-7 block h-auto w-[min(44rem,88%)] invert dark:invert-0"
@@ -84,13 +87,15 @@ export function Hero() {
             muted
             loop
             playsInline
-            poster={heroPoster}
+            poster={heroPoster.src}
             className="block h-[42vh] w-full object-cover object-[center_25%] sm:h-[55vh]"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/85 to-transparent to-45%" />
           <div className="absolute bottom-0 left-0 p-6">
             <p className="font-display text-3xl uppercase tracking-tight">Shanks</p>
-            <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-acid">Freestyle Armageddon</p>
+            <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-acid">
+              Freestyle Armageddon
+            </p>
           </div>
         </div>
       </div>
