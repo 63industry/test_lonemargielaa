@@ -1,9 +1,9 @@
 [build]
-  command = "npm run build"
+  command = "npm install lightningcss-linux-x64-gnu@1.32.0 && npm run build"
   publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
