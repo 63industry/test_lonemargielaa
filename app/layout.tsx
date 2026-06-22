@@ -24,13 +24,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
         />
+      </head>
+      <body className="grain">
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{const s=localStorage.getItem('theme');const d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(!s&&d))document.documentElement.classList.add('dark');}catch(e){}})();`,
           }}
         />
-      </head>
-      <body className="grain">
         <Providers>{children}</Providers>
       </body>
     </html>
