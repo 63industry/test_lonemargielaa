@@ -17,13 +17,13 @@ const socials = [
 ];
 
 export function Contact() {
-  const [projectType, setProjectType] = useState("");
-
+  const [selectedTypeIndex, setSelectedTypeIndex] = useState(0);
   const [sending, setSending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { lang } = useLang();
 
   const projectTypes = t.contact.types[lang];
+  const projectType = projectTypes[selectedTypeIndex];
 
   const schema = z.object({
     name: z
@@ -76,7 +76,7 @@ export function Contact() {
       .then(() => {
         setSending(false);
         form.reset();
-        setProjectType("");
+        setSelectedTypeIndex(0);
         setSubmitted(true);
       })
       .catch(() => {
@@ -174,13 +174,13 @@ export function Contact() {
                 {t.contact.type[lang]}
               </span>
               <div className="mt-3 flex flex-wrap gap-2">
-                {projectTypes.map((type) => (
+                {projectTypes.map((type, i) => (
                   <button
                     key={type}
                     type="button"
-                    onClick={() => setProjectType(type)}
+                    onClick={() => setSelectedTypeIndex(i)}
                     className={`px-4 py-2 font-mono text-xs uppercase tracking-[0.15em] transition-colors ${
-                      projectType === type
+                      selectedTypeIndex === i
                         ? "bg-acid text-acid-foreground"
                         : "border border-border text-muted-foreground hover:border-acid"
                     }`}

@@ -61,8 +61,8 @@ export const t = {
     send: { en: "Send request", fr: "Envoyer" },
     sending: { en: "Sending...", fr: "Envoi..." },
     types: {
-      en: ["Music Video", "Streetwear Brand", "Event", "Portrait"],
-      fr: ["Clip", "Marque Streetwear", "Événement", "Portrait"],
+      en: ["Other", "Music Video", "Streetwear Brand", "Event", "Portrait"],
+      fr: ["Autre", "Clip", "Marque Streetwear", "Événement", "Portrait"],
     },
   },
   marquee: {
